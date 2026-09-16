@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتاب لند</title>
+    <link rel="stylesheet" href="Css/menu.css">
+</head>
+
+<body>
+
+    <!-- ==================== هدر ==================== -->
+    <header class="header">
+
+        <!-- ==================== منو ==================== -->
+        <nav class="nav">
+            <a href="menu.html">خانه</a>
+
+            <div class="dropdown">
+                <a href="#" class="has-dropdown">دسته‌ها</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">همه</a></li>
+                    <li><a href="#">مانها</a></li>
+                    <li><a href="#">مانهوا</a></li>
+                    <li><a href="#">ناوال</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" class="has-dropdown">وبلاگ</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">مقالات</a></li>
+                    <li><a href="#">اخبار</a></li>
+                    <li><a href="#">نقد و بررسی</a></li>
+                </ul>
+            </div>
+
+            <a href="#">ژانرها</a>
+            <a href="#">قوانین</a>
+        </nav>
+
+        <!-- ==================== دکمه‌های هدر ==================== -->
+        <div class="header-right">
+
+            <button class="btn-team">عضو تیم شو</button>
+
+            <!-- دکمه ورود / پروفایل -->
+            <button type="button" class="icon-btn" id="profile-btn" title="ورود به حساب" onclick="goToProfile()">
+               🔑
+            </button>
+
+            <!-- جستجو -->
+            <button class="icon-btn" id="search-btn" title="جستجو" onclick="openSearch()">
+                🔍
+            </button>
+
+            <!-- دارک مود -->
+            <button class="icon-btn" id="theme-toggle" title="تغییر تم">
+                🌙
+            </button>
+
+        </div>
+    </header>
+
+    <!-- ==================== پنجره جستجو ==================== -->
+    <div id="search-box" class="search-box">
+        <div class="search-header">
+            <input type="text" id="search-input" placeholder="نام مانهوا، مانها یا ناوال را جستجو کنید..." autocomplete="off">
+            <button class="search-close" onclick="closeSearch()">✕</button>
+        </div>
+        <div id="search-results"></div>
+    </div>
+
+    <!-- ==================== آخرین آثار ==================== -->
+    <section class="latest-section">
+        <div class="section-header">
+            <h2 class="section-title">آخرین آثار بروز شده</h2>
+            <a href="#" class="btn-view-all">مشاهده همه</a>
+        </div>
+
+        <div class="cards-container">
+
+            <!-- کارت ۱ -->
+            <a href="detail-mythical.html" class="card">
+                <div class="card-image">
+                    <img src="img/آغاز گر عصر هیولا های اسطوره ای.webp" alt="I Ushered in the Age of Mythical Pet Beasts">
+                    <span class="badge badge-type purple">مانهوا</span>
+                    <span class="badge badge-status">درحال پخش</span>
+                    <span class="chapter">۴۵ چپتر</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">I Ushered in the Age of Mythical Pet Beasts</h3>
+                    <div class="card-meta">
+                        <span>👁 ۵,۷۷۳</span>
+                        <span>۱۴۰۲/۵</span>
+                        <span>۴۰۰ تومان</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- کارت ۲ -->
+            <a href="detail.html" class="card">
+                <div class="card-image">
+                    <img src="img/فرمانروای مردگان.webp" alt="Rebirth: Monarch of the Dead">
+                    <span class="badge badge-type">مانها</span>
+                    <span class="badge badge-status">درحال پخش</span>
+                    <span class="chapter">۳۲ چپتر</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Rebirth: Monarch of the Dead</h3>
+                    <div class="card-meta">
+                        <span>👁 ۱</span>
+                        <span>۱۴۰۲/۶</span>
+                        <span>۴۰۰ تومان</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- کارت ۳ -->
+            <a href="detail-doctor.html" class="card">
+                <div class="card-image">
+                    <img src="img/تولئ دوباره دکتر.jpg" alt="Doctor's Rebirth">
+                    <span class="badge badge-type">مانها</span>
+                    <span class="badge badge-status">درحال پخش</span>
+                    <span class="chapter">۲۴۰ چپتر</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Doctor's Rebirth</h3>
+                    <div class="card-meta">
+                        <span>👁 ۱</span>
+                        <span>۱۴۰۲/۶</span>
+                        <span>۴۰۰ تومان</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- کارت ۴ -->
+            <a href="detail-nano.html" class="card">
+                <div class="card-image">
+                    <img src="img/نانو ماشین.webp" alt="Nano Machine">
+                    <span class="badge badge-type purple">مانهوا</span>
+                    <span class="badge badge-status">درحال پخش</span>
+                    <span class="chapter">۳۲۸ چپتر</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Nano Machine</h3>
+                    <div class="card-meta">
+                        <span>👁 ۴</span>
+                        <span>۱۴۰۲/۵</span>
+                        <span>۴۰۰ تومان</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- کارت ۵ -->
+            <a href="detail-roleplayer.html" class="card">
+                <div class="card-image">
+                    <img src="img/قهرمان نقش آفرین.webp" alt="Is It Bad That the Main Character’s a Roleplayer?">
+                    <span class="badge badge-type">مانها</span>
+                    <span class="badge badge-status">درحال پخش</span>
+                    <span class="chapter">۲۹ چپتر</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">Is It Bad That the Main Character’s a Roleplayer?</h3>
+                    <div class="card-meta">
+                        <span>👁 ۴</span>
+                        <span>۱۴۰۲/۵</span>
+                        <span>۴۰۰ تومان</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ==================== استایل جستجو ==================== -->
+    <style>
+        .search-box {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 520px;
+            max-width: 90%;
+            background: white;
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+        }
+
+        .search-header {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-header input {
+            flex: 1;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            direction: rtl;
+        }
+
+        .search-header input:focus {
+            border-color: #f5a000;
+        }
+
+        .search-close {
+            width: 45px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #eeeeee;
+            font-size: 18px;
+        }
+
+        .search-close:hover {
+            background: #dddddd;
+        }
+
+        .search-result {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            margin-top: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.2s;
+        }
+
+        .search-result:hover {
+            background: #f3f3f3;
+        }
+
+        .search-result img {
+            width: 50px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .search-result-title {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+        }
+
+        .search-hint {
+            text-align: center;
+            color: #999;
+            padding: 18px;
+            font-size: 13px;
+        }
+    </style>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        /* ==================== اطلاعات آثار ==================== */
+        const works = [
+            {
+                name: "I Ushered in the Age of Mythical Pet Beasts",
+                keywords: "آغاز گر عصر هیولا های اسطوره ای آغازگر عصر هیولاهای اسطوره ای مانهوا mythical pet beasts",
+                image: "img/آغاز گر عصر هیولا های اسطوره ای.webp",
+                link: "detail-mythical.html"
+            },
+            {
+                name: "Rebirth: Monarch of the Dead",
+                keywords: "فرمانروای مردگان مانها rebirth monarch dead",
+                image: "img/فرمانروای مردگان.webp",
+                link: "detail.html"
+            },
+            {
+                name: "Doctor's Rebirth",
+                keywords: "تولد دوباره دکتر تولد دوباره دکتر مانها doctor rebirth",
+                image: "img/تولئ دوباره دکتر.jpg",
+                link: "detail-doctor.html"
+            },
+            {
+                name: "Nano Machine",
+                keywords: "نانو ماشین مانهوا nano machine",
+                image: "img/نانو ماشین.webp",
+                link: "detail-nano.html"
+            },
+            {
+                name: "Is It Bad That the Main Character’s a Roleplayer?",
+                keywords: "قهرمان نقش آفرین قهرمان نقش آفرین مانهوا roleplayer",
+                image: "img/قهرمان نقش آفرین.webp",
+                link: "detail-roleplayer.html"
+            }
+        ];
+
+        /* ==================== باز کردن سرچ ==================== */
+        function openSearch() {
+            const searchBox = document.getElementById("search-box");
+            searchBox.style.display = "block";
+            document.getElementById("search-input").focus();
+        }
+
+        /* ==================== بستن سرچ ==================== */
+        function closeSearch() {
+            const searchBox = document.getElementById("search-box");
+            searchBox.style.display = "none";
+            document.getElementById("search-input").value = "";
+            document.getElementById("search-results").innerHTML = "";
+        }
+
+        /* ==================== جستجو ==================== */
+        document.getElementById("search-input").addEventListener("input", function () {
+            const search = this.value.trim().toLowerCase();
+            const results = document.getElementById("search-results");
+            results.innerHTML = "";
+
+            if (search === "") {
+                results.innerHTML = '<div class="search-hint">نام اثر مورد نظر را جستجو کنید 🔍</div>';
+                return;
+            }
+
+            const found = works.filter(function (work) {
+                return work.name.toLowerCase().includes(search) ||
+                       work.keywords.toLowerCase().includes(search);
+            });
+
+            if (found.length === 0) {
+                results.innerHTML = '<div class="no-result">اثری با این نام پیدا نشد ❌</div>';
+                return;
+            }
+
+            found.forEach(function (work) {
+                results.innerHTML += `
+                    <a href="${work.link}" class="search-result">
+                        <img src="${work.image}" alt="${work.name}">
+                        <div class="search-result-title">${work.name}</div>
+                    </a>
+                `;
+            });
+        });
+
+        /* ==================== پروفایل / ورود ==================== */
+        function updateProfileButton() {
+            const btn = document.getElementById("profile-btn");
+            const loggedUser = localStorage.getItem("ketabLandLoggedUser");
+
+            if (loggedUser) {
+                btn.innerHTML = "👤";
+                btn.title = "پروفایل";
+            } else {
+                btn.innerHTML = "🔑";
+                btn.title = "ورود به حساب";
+            }
+        }
+
+        function goToProfile() {
+            const loggedUser = localStorage.getItem("ketabLandLoggedUser");
+
+            if (loggedUser) {
+                try {
+                    const user = JSON.parse(loggedUser);
+                    window.location.href = "profile.html";
+                    // اگر صفحه پروفایل ساختی این خط رو فعال کن:
+                    // window.location.href = "profile.html";
+                } catch (error) {
+                    localStorage.removeItem("ketabLandLoggedUser");
+                    window.location.href = "login.html";
+                }
+            } else {
+                window.location.href = "login.html";
+            }
+        }
+
+        // وقتی صفحه لود شد آیکون درست رو نشون بده
+        updateProfileButton();
+
+        /* ==================== دارک مود ==================== */
+        const toggleBtn = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark-mode");
+            toggleBtn.textContent = "☀️";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            body.classList.toggle("dark-mode");
+
+            if (body.classList.contains("dark-mode")) {
+                toggleBtn.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            } else {
+                toggleBtn.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            }
+        });
+    </script>
+
+</body>
+</html>

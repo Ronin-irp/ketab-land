@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود | کتاب لند</title>
+    <link rel="stylesheet" href="Css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* استایل‌های کمکی برای پیام‌ها و ظاهر بهتر */
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .message {
+            text-align: center;
+            margin: 10px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .message.error {
+            background: #ffe0e0;
+            color: #c62828;
+            display: block;
+        }
+
+        .message.success {
+            background: #e0f7e9;
+            color: #2e7d32;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        input {
+            direction: rtl;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <!-- ==================== ثبت‌نام ==================== -->
+        <div class="signup">
+            <form id="signup-form">
+                <label for="chk" aria-hidden="true">ثبت‌نام</label>
+
+                <div class="form-group">
+                    <input type="text" id="signup-username" placeholder="نام کاربری" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="signup-email" placeholder="ایمیل" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="signup-password" placeholder="رمز عبور" required minlength="6">
+                </div>
+
+                <div id="signup-message" class="message"></div>
+
+                <button type="submit">ثبت‌نام</button>
+            </form>
+        </div>
+
+        <!-- ==================== ورود ==================== -->
+        <div class="login">
+            <form id="login-form">
+                <label for="chk" aria-hidden="true">ورود</label>
+
+                <div class="form-group">
+                    <input type="email" id="login-email" placeholder="ایمیل" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="login-password" placeholder="رمز عبور" required>
+                </div>
+
+                <div id="login-message" class="message"></div>
+
+                <button type="submit">ورود</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // ==================== کلیدهای localStorage ====================
+        const USERS_KEY = "ketabLandUsers";
+        const LOGGED_USER_KEY = "ketabLandLoggedUser";
+
+        // ==================== دریافت لیست کاربران ====================
+        function getUsers() {
+            const users = localStorage.getItem(USERS_KEY);
+            return users ? JSON.parse(users) : [];
+        }
+
+        // ==================== ذخیره لیست کاربران ====================
+        function saveUsers(users) {
+            localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        }
+
+        // ==================== نمایش پیام ====================
+        function showMessage(elementId, text, type) {
+            const el = document.getElementById(elementId);
+            el.textContent = text;
+            el.className = "message " + type;
+        }
+
+        // ==================== پاک کردن پیام ====================
+        function clearMessage(elementId) {
+            const el = document.getElementById(elementId);
+            el.textContent = "";
+            el.className = "message";
+        }
+
+        // ==================== ثبت‌نام ====================
+        document.getElementById("signup-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            clearMessage("signup-message");
+
+            const username = document.getElementById("signup-username").value.trim();
+            const email = document.getElementById("signup-email").value.trim().toLowerCase();
+            const password = document.getElementById("signup-password").value;
+
+            if (username.length < 3) {
+                showMessage("signup-message", "نام کاربری باید حداقل ۳ حرف باشد", "error");
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage("signup-message", "رمز عبور باید حداقل ۶ کاراکتر باشد", "error");
+                return;
+            }
+
+            const users = getUsers();
+
+            // بررسی تکراری بودن ایمیل
+            const emailExists = users.some(user => user.email === email);
+            if (emailExists) {
+                showMessage("signup-message", "این ایمیل قبلاً ثبت شده است", "error");
+                return;
+            }
+
+            // بررسی تکراری بودن نام کاربری
+            const usernameExists = users.some(user => user.username === username);
+            if (usernameExists) {
+                showMessage("signup-message", "این نام کاربری قبلاً استفاده شده است", "error");
+                return;
+            }
+
+            // ساخت کاربر جدید
+            const newUser = {
+                username: username,
+                email: email,
+                password: password, // در پروژه واقعی باید هش شود
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            saveUsers(users);
+
+            // لاگین خودکار بعد از ثبت‌نام
+            localStorage.setItem(LOGGED_USER_KEY, JSON.stringify({
+                username: newUser.username,
+                email: newUser.email
+            }));
+
+            showMessage("signup-message", "ثبت‌نام با موفقیت انجام شد! در حال انتقال...", "success");
+
+            setTimeout(() => {
+                window.location.href = "menu.html";
+            }, 1200);
+        });
+
+        // ==================== ورود ====================
+        document.getElementById("login-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            clearMessage("login-message");
+
+            const email = document.getElementById("login-email").value.trim().toLowerCase();
+            const password = document.getElementById("login-password").value;
+
+            const users = getUsers();
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (!user) {
+                showMessage("login-message", "ایمیل یا رمز عبور اشتباه است", "error");
+                return;
+            }
+
+            // ذخیره کاربر لاگین شده
+            localStorage.setItem(LOGGED_USER_KEY, JSON.stringify({
+                username: user.username,
+                email: user.email
+            }));
+
+            showMessage("login-message", "ورود موفقیت‌آمیز بود! در حال انتقال...", "success");
+
+            setTimeout(() => {
+                window.location.href = "menu.html";
+            }, 1000);
+        });
+
+        // ==================== اگر قبلاً لاگین کرده باشه، مستقیم بفرست به صفحه اصلی ====================
+        window.addEventListener("DOMContentLoaded", function () {
+            const loggedUser = localStorage.getItem(LOGGED_USER_KEY);
+            if (loggedUser) {
+                window.location.href = "menu.html";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

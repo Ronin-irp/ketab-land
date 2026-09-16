@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Ushered in the Age of Mythical Pet Beasts - کتاب لند</title>
+    <link rel="stylesheet" href="Css/menu.css">
+    <link rel="stylesheet" href="Css/detail.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="menu.html">خانه</a>
+            <a href="#">دسته‌ها</a>
+            <a href="#">وبلاگ</a>
+            <a href="#">ژانرها</a>
+            <a href="#">قوانین</a>
+        </nav>
+        <div class="header-right">
+            <button class="btn-team">عضو تیم شو</button>
+            <button class="icon-btn">👤</button>
+            <button class="icon-btn">🔍</button>
+            <button class="icon-btn" id="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <main class="detail-page">
+        <div class="detail-tabs">
+            <button class="tab active" data-tab="info">اطلاعات</button>
+            <button class="tab" data-tab="chapters">چپتر ها</button>
+            <button class="tab" data-tab="staff">دست اندرکاران</button>
+            <button class="tab" data-tab="review">نقد و بررسی</button>
+            <button class="tab" data-tab="comments">نظرات <span class="badge-count">۷۲</span></button>
+            <button class="tab" data-tab="related">مرتبط</button>
+        </div>
+
+        <div class="tab-content active" id="info">
+            <div class="detail-content">
+                <div class="rating-box">
+                    <div class="rating-header">
+                        <span class="rating-score">۴.۶ / ۵</span>
+                        <span class="rating-star">★</span>
+                        <span>رتبه بندی</span>
+                    </div>
+                    <div class="rating-bars">
+                        <div class="bar-row"><span>۵</span><div class="bar"><div class="fill" style="width:70%"></div></div><span>۴۱۰</span></div>
+                        <div class="bar-row"><span>۴</span><div class="bar"><div class="fill" style="width:20%"></div></div><span>۹۵</span></div>
+                        <div class="bar-row"><span>۳</span><div class="bar"><div class="fill" style="width:7%"></div></div><span>۳۰</span></div>
+                        <div class="bar-row"><span>۲</span><div class="bar"><div class="fill" style="width:2%"></div></div><span>۱۰</span></div>
+                        <div class="bar-row"><span>۱</span><div class="bar"><div class="fill" style="width:1%"></div></div><span>۵</span></div>
+                    </div>
+                    <button class="btn-rate">ارسال رتبه</button>
+                </div>
+
+                <div class="info-section">
+                    <div class="title-row">
+                        <h1>I Ushered in the Age of Mythical Pet Beasts</h1>
+                        <span class="views">👁 <span id="view-count">...</span></span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">اکشن</span>
+                        <span class="tag">فانتزی</span>
+                        <span class="tag">پرورش حیوانات</span>
+                        <span class="tag">ماجراجویی</span>
+                        <span class="tag">شخصیت اصلی قدرتمند</span>
+                    </div>
+                    <div class="meta-info">
+                        <div><strong>نوع :</strong> مانهوا</div>
+                        <div><strong>وضعیت :</strong> <span class="status">درحال پخش</span></div>
+                        <div><strong>تعداد چپتر :</strong> ۴۵</div>
+                        <div><strong>تاریخ انتشار :</strong> ۲۰۲۳</div>
+                        <div><strong>طراح :</strong>-</div>
+                        <div><strong>نویسنده :</strong>-</div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-price">قیمت : ۴۰۰ تومان</button>
+                        <button class="btn-read">شروع به خواندن</button>
+                        <button class="btn-bookmark">افزودن به نشانک</button>
+                    </div>
+                </div>
+
+                <div class="cover-section">
+                    <img src="img/آغاز گر عصر هیولا های اسطوره ای.webp" alt="I Ushered in the Age of Mythical Pet Beasts" class="cover-img">
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3>خلاصه داستان</h3>
+                <p>
+                    در دنیایی که انسان‌ها با حیوانات اساطیری قرارداد می‌بندند و با آن‌ها می‌جنگند، 
+                    قهرمان داستان با دانش و تجربیات خاص خود، عصر جدیدی از پرورش و قدرت حیوانات اسطوره‌ای را آغاز می‌کند.
+                </p>
+            </div>
+        </div>
+
+        <div class="tab-content" id="chapters"><p class="coming-soon">چپترها به زودی...</p></div>
+        <div class="tab-content" id="staff"><p class="coming-soon">دست اندرکاران به زودی...</p></div>
+        <div class="tab-content" id="review"><p class="coming-soon">نقد و بررسی به زودی...</p></div>
+        <div class="tab-content" id="comments"><p class="coming-soon">نظرات به زودی...</p></div>
+        <div class="tab-content" id="related"><p class="coming-soon">آثار مرتبط به زودی...</p></div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        fetch('https://api.countapi.xyz/hit/ketabland/mythical-beasts')
+            .then(res => res.json())
+            .then(data => document.getElementById('view-count').textContent = data.value.toLocaleString('en-US'));
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        }
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>
