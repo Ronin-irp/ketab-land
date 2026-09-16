@@ -178,7 +178,7 @@
             showMessage("signup-message", "ثبت‌نام با موفقیت انجام شد! در حال انتقال...", "success");
 
             setTimeout(() => {
-                window.location.href = "menu.html";
+                window.location.href = "index.html";
             }, 1200);
         });
 
@@ -209,7 +209,7 @@
             showMessage("login-message", "ورود موفقیت‌آمیز بود! در حال انتقال...", "success");
 
             setTimeout(() => {
-                window.location.href = "menu.html";
+                window.location.href = "index.html";
             }, 1000);
         });
 
@@ -217,7 +217,7 @@
         window.addEventListener("DOMContentLoaded", function () {
             const loggedUser = localStorage.getItem(LOGGED_USER_KEY);
             if (loggedUser) {
-                window.location.href = "menu.html";
+                window.location.href = "index.html";
             }
         });
     </script>
